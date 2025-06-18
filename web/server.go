@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"webscraper/internal/usecase"
+	"webscraper/usecase"
 
 	"github.com/gorilla/mux"
 )
