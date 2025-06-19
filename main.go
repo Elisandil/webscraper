@@ -7,11 +7,11 @@ import (
 	"os/signal"
 	"path/filepath"
 	"syscall"
-	"webscraper/internal/config"
-	"webscraper/internal/infrastructure/database"
-	"webscraper/internal/infrastructure/repository"
-	"webscraper/internal/infrastructure/web"
-	"webscraper/internal/usecase"
+	"webscraper/config"
+	"webscraper/infrastructure/database"
+	"webscraper/infrastructure/repository"
+	"webscraper/infrastructure/web"
+	"webscraper/usecase"
 )
 
 const (
