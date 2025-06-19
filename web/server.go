@@ -57,7 +57,7 @@ func (s *Server) setupMiddleware() {
 }
 
 func (s *Server) Start() error {
-	endpoints := []string{ // -> No es un array, es un slice: Diferencia array tamaño fijo, slice tamaño dinámico
+	endpoints := []string{ 
 		"GET  / - Web interface",
 		"POST /api/scrape - Scrape URL",
 		"GET  /api/results - Get all results",
