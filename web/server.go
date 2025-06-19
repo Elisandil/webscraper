@@ -32,7 +32,7 @@ type SuccessResponse struct {
 }
 
 func NewServer(port string, uc *usecase.ScrapingUseCase) *Server {
-	s := &Server{port: port, usecase: uc, router: mux.NewRouter()} // -> Puntero que apunta a una instancia de Server
+	s := &Server{port: port, usecase: uc, router: mux.NewRouter()} 
 	s.setupRoutes()
 	s.setupMiddleware()
 	return s
