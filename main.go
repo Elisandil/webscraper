@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"syscall"
 	"webscraper/config"
-	"webscraper/infrastructure/database"
-	"webscraper/infrastructure/repository"
-	"webscraper/infrastructure/web"
+	"webscraper/database"
+	"webscraper/repository"
+	"webscraper/web"
 	"webscraper/usecase"
 )
 
