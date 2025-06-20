@@ -39,7 +39,7 @@ func NewServer(port string, uc *usecase.ScrapingUseCase) *Server {
 }
 
 func (s *Server) setupRoutes() {
-	s.router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./web/static/"))))
+	s.router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./interface/static/"))))
 
 	api := s.router.PathPrefix("/api").Subrouter()
 	api.HandleFunc("/scrape", s.scrapeHandler).Methods("POST")
@@ -71,7 +71,7 @@ func (s *Server) Start() error {
 }
 
 func (s *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./web/templates/index.html")
+	http.ServeFile(w, r, "./interface/templates/index.html")
 }
 
 func (s *Server) scrapeHandler(w http.ResponseWriter, r *http.Request) {
