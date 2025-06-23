@@ -104,7 +104,7 @@ scraping:
 
 ## Desarrollo
 
-La aplicación sigue Clean Architecture:
+La aplicación sigue un patrón de Clean Architecture:
 
 1. **Domain**: Entidades y reglas de negocio
 2. **Use Cases**: Lógica de aplicación
