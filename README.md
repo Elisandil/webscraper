@@ -5,7 +5,7 @@ Una aplicación de webscraping construida con Go 1.24 siguiendo principios de Cl
 ## Características
 
 - Clean Architecture (Domain, Use Cases, Infrastructure)
-- Interfaz web moderna con HTML, CSS (Tailwind) y JavaScript
+- Interfaz web con HTML, CSS (Tailwind) y JavaScript (SPA)
 - Persistencia SQLite sin CGO
 - Configuración mediante archivo YAML
 - API REST para operaciones CRUD
