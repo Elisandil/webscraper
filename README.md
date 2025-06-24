@@ -17,7 +17,7 @@ webscraper/
 ├── main.go                          # Punto de entrada
 ├── config.yaml                      # Configuración
 ├── config/                          # Carga de configuración
-├── domain/                          # Entidades y interfaces
+├── domain/                          # Entidades e interfaces
 ├── usecase/                         # Lógica de negocio
 ├── infrastructure/                  # Implementaciones concretas
 ├── interface/
