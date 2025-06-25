@@ -11,6 +11,7 @@ type Config struct {
 	Database DatabaseConfig `yaml:"database"`
 	Scraping ScrapingConfig `yaml:"scraping"`
 	Features FeaturesConfig `yaml:"features"`
+	Auth     AuthConfig     `yaml:"auth"`	
 }
 
 type ServerConfig struct {
@@ -38,17 +39,25 @@ type FeaturesConfig struct {
 	CacheDuration   int  `yaml:"cache_duration"`
 }
 
+type AuthConfig struct {
+	JWTSecret     string `yaml:"jwt_secret"`
+	TokenDuration int    `yaml:"token_duration_hours"`
+	BCryptCost    int    `yaml:"bcrypt_cost"`
+	RequireAuth   bool   `yaml:"require_auth"`
+	DefaultRole   string `yaml:"default_role"`
+}
+
 func Load(path string) (*Config, error) {
 	data, err := os.ReadFile(path)
+	
 	if err != nil {
 		return nil, err
 	}
-
 	var config Config
+	
 	if err := yaml.Unmarshal(data, &config); err != nil {
 		return nil, err
 	}
-
 	if config.Server.Port == "" {
 		config.Server.Port = "8080"
 	}
@@ -73,5 +82,18 @@ func Load(path string) (*Config, error) {
 	if config.Features.CacheDuration == 0 {
 		config.Features.CacheDuration = 3600
 	}
+
+	if config.Auth.JWTSecret == "" {
+		config.Auth.JWTSecret = "who_knows_this_secret"
+	}
+	if config.Auth.TokenDuration == 0 {
+		config.Auth.TokenDuration = 1
+	}
+	if config.Auth.BCryptCost == 0 {
+		config.Auth.BCryptCost = 12
+	}
+	if config.Auth.DefaultRole == "" {
+		config.Auth.DefaultRole = "user"
+	}	
 	return &config, nil
 }
