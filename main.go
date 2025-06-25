@@ -22,38 +22,27 @@ const (
 
 func main() {
 	log.Printf("Starting %s v%s", appName, version)
-	// Cargar configuración
 	cfg, err := loadConfig()
 
 	if err != nil {
 		log.Fatal("Failed to load configuration:", err)
 	}
-	// Inicializar base de datos
 	db, err := initializeDatabase(cfg)
 
 	if err != nil {
 		log.Fatal("Failed to initialize database:", err)
 	}
 	defer func() {
-
 		if err := db.Close(); err != nil {
 			log.Printf("Error closing database: %v", err)
 		}
 	}()
-	// Inicializar repositorio
 	repo := repository.NewScrapingRepository(db)
-
-	// Inicializar caso de uso
 	uc := usecase.NewScrapingUseCase(repo, cfg)
-
-	// Inicializar servidor web
 	server := web.NewServer(cfg.Server.Port, uc)
-
-	// Configurar manejo de señales para shutdown graceful
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 
-	// Iniciar servidor en goroutine
 	go func() {
 		log.Printf("Server starting on port %s", cfg.Server.Port)
 		log.Printf("Server URL: http://localhost:%s", cfg.Server.Port)
@@ -62,7 +51,6 @@ func main() {
 			log.Fatal("Failed to start server:", err)
 		}
 	}()
-	// Esperar señal de shutdown
 	sig := <-sigChan
 	log.Printf("Received signal: %v. Shutting down gracefully...", sig)
 
@@ -100,5 +88,6 @@ func initializeDatabase(cfg *config.Config) (*database.SQLiteDB, error) {
 		return nil, fmt.Errorf("failed to initialize SQLite database: %w", err)
 	}
 	log.Printf("Database initialized successfully at: %s", cfg.Database.Path)
+	
 	return db, nil
 }
