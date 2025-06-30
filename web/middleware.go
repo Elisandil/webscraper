@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"strings"
-	"webscraper/internal/domain/entity"
-	"webscraper/internal/usecase"
+	"webscraper/domain/entity"
+	"webscraper/usecase"
 )
 
 type contextKey string
