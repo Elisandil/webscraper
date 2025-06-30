@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"time"
-	"webscraper/internal/domain/entity"
-	"webscraper/internal/domain/repository"
-	"webscraper/internal/infrastructure/database"
+	"webscraper/domain/entity"
+	"webscraper/domain/repository"
+	"webscraper/infrastructure/database"
 )
 
 type userRepository struct {
