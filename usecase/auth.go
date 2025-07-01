@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"time"
-	"webscraper/internal/config"
-	"webscraper/internal/domain/entity"
-	"webscraper/internal/domain/repository"
+	"webscraper/config"
+	"webscraper/domain/entity"
+	"webscraper/domain/repository"
 
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
