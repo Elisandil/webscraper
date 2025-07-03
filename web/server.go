@@ -217,7 +217,7 @@ func (s *Server) getUsersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "./web/templates/index.html")
+	http.ServeFile(w, r, "./interface/templates/index.html")
 }
 
 func (s *Server) scrapeHandler(w http.ResponseWriter, r *http.Request) {
